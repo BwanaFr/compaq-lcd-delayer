@@ -1,0 +1,240 @@
+Name     LCD_DELAY ;
+PartNo   00 ;
+Date     24/11/2022 ;
+Revision 01 ;
+Designer Engineer ;
+Company  CERN ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+
+/**  Inputs  **/
+
+Pin 1        = clk;        	/* Pixel clock                 */
+Pin 4        = sync;     	/* Horizontal sync             */
+
+/**  Outputs  **/
+
+Pin [14..19] = [Q5..Q0];   	/* Counter outputs              */
+Pin 23 = lcd_enabled;      	/* LCD display enable output    */
+Pin 20 = prev_sync;		/* Previous sync value (D flip-flop) */
+Pin 21 = sync_changed;	/* Sync state changed 	     */
+
+prev_sync.ar = 'b'0;
+prev_sync.sp = 'b'0;
+
+sync_changed = (sync & !prev_sync) # (!sync & prev_sync);
+prev_sync.d = sync;
+
+
+/** Declarations and Intermediate Variable Definitions **/
+
+field cou = [Q5..Q0];          /* declare counter bit field */
+$define S0 'b'000000
+$define S1 'b'000001
+$define S2 'b'000010
+$define S3 'b'000011
+$define S4 'b'000100
+$define S5 'b'000101
+$define S6 'b'000110
+$define S7 'b'000111
+$define S8 'b'001000
+$define S9 'b'001001
+$define S10 'b'001010
+$define S11 'b'001011
+$define S12 'b'001100
+$define S13 'b'001101
+$define S14 'b'001110
+$define S15 'b'001111
+$define S16 'b'010000
+$define S17 'b'010001
+$define S18 'b'010010
+$define S19 'b'010011
+$define S20 'b'010100
+$define S21 'b'010101
+$define S22 'b'010110
+$define S23 'b'010111
+$define S24 'b'011000
+$define S25 'b'011001
+$define S26 'b'011010
+$define S27 'b'011011
+$define S28 'b'011100
+$define S29 'b'011101
+$define S30 'b'011110
+$define S31 'b'011111
+$define S32 'b'100000
+$define S33 'b'100001
+$define S34 'b'100010
+$define S35 'b'100011
+$define S36 'b'100100
+$define S37 'b'100101
+$define S38 'b'100110
+$define S39 'b'100111
+$define S40 'b'101000
+$define S41 'b'101001
+$define S42 'b'101010
+$define S43 'b'101011
+$define S44 'b'101100
+$define S45 'b'101101
+$define S46 'b'101110
+$define S47 'b'101111
+$define S48 'b'110000
+$define S49 'b'110001
+$define S50 'b'110010
+$define S51 'b'110011
+
+
+/** Logic Equations **/
+
+Sequence cou { 
+present S0
+		next S1;
+present S1
+			if sync_changed next S0;
+			default next S2;
+present S2
+			if sync_changed next S0;
+			default next S3;
+present S3
+			if sync_changed next S0;
+			default next S4;
+present S4
+			if sync_changed next S0;
+			default next S5;
+present S5
+			if sync_changed next S0;
+			default next S6;
+present S6
+			if sync_changed next S0;
+			default next S7;
+present S7
+			if sync_changed next S0;
+			default next S8;
+present S8
+			if sync_changed next S0;
+			default next S9;
+present S9
+			if sync_changed next S0;
+			default next S10;
+present S10
+			if sync_changed next S0;
+			default next S11;
+present S11
+			if sync_changed next S0;
+			default next S12;
+present S12
+			if sync_changed next S0;
+			default next S13;
+present S13
+			if sync_changed next S0;
+			default next S14;
+present S14
+			if sync_changed next S0;
+			default next S15;
+present S15
+			if sync_changed next S0;
+			default next S16;
+present S16
+			if sync_changed next S0;
+			default next S17;
+present S17
+			if sync_changed next S0;
+			default next S18;
+present S18
+			if sync_changed next S0;
+			default next S19;
+present S19
+			if sync_changed next S0;
+			default next S20;
+present S20
+			if sync_changed next S0;
+			default next S21;
+present S21
+			if sync_changed next S0;
+			default next S22;
+present S22
+			if sync_changed next S0;
+			default next S23;
+present S23
+			if sync_changed next S0;
+			default next S24;
+present S24
+			if sync_changed next S0;
+			default next S25;
+present S25
+			if sync_changed next S0;
+			default next S26;
+present S26
+			if sync_changed next S0;
+			default next S27;
+present S27
+			if sync_changed next S0;
+			default next S28;
+present S28
+			if sync_changed next S0;
+			default next S29;
+present S29
+			if sync_changed next S0;
+			default next S30;
+present S30
+			if sync_changed next S0;
+			default next S31;
+present S31
+			if sync_changed next S0;
+			default next S32;
+present S32
+			if sync_changed next S0;
+			default next S33;
+present S33
+			if sync_changed next S0;
+			default next S34;
+present S34
+			if sync_changed next S0;
+			default next S35;
+present S35
+			if sync_changed next S0;
+			default next S36;
+present S36
+			if sync_changed next S0;
+			default next S37;
+present S37
+			if sync_changed next S0;
+			default next S38;
+present S38
+			if sync_changed next S0;
+			default next S39;
+present S39
+			if sync_changed next S0;
+			default next S40;
+present S40
+			if sync_changed next S0;
+			default next S41;
+present S41
+			if sync_changed next S0;
+			default next S42;
+present S42
+			if sync_changed next S0;
+			default next S43;
+present S43
+			if sync_changed next S0;
+			default next S44;
+present S44
+			if sync_changed next S0;
+			default next S45;
+present S45
+			if sync_changed next S0;
+			default next S46;
+present S46
+			if sync_changed next S0;
+			default next S46  out lcd_enabled;
+/*present S47
+			if sync_changed next S0;
+			default next S48;
+present S48
+			if sync_changed next S0;
+			default next S49;
+present S49
+			if sync_changed next S0;
+			default next S49 out lcd_enabled;*/
+}
